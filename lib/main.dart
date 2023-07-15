@@ -44,15 +44,11 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Icon(
-                            Icons.male,
-                            size: 50.0,
-                          ),
+                        Icon(
+                          Icons.male,
+                          size: 50.0,
                         ),
-                        Expanded(
-                          child: Text("MALE"),
-                        ),
+                        Text("MALE"),
                       ],
                     ),
                   ),
@@ -66,15 +62,11 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Icon(
-                            Icons.female,
-                            size: 50.0,
-                          ),
+                        Icon(
+                          Icons.female,
+                          size: 50.0,
                         ),
-                        Expanded(
-                          child: Text("FEMALE"),
-                        ),
+                        Text("FEMALE"),
                       ],
                     ),
                   ),
@@ -94,12 +86,8 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Text("HEIGHT"),
-                        ),
-                        Expanded(
-                          child: Text("$_height cm"),
-                        ),
+                        Text("HEIGHT"),
+                        Text("$_height cm"),
                       ],
                     ),
                   ),
@@ -119,14 +107,10 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Text("WEIGHT"),
-                        ),
-                        Expanded(
-                          child: Text(
-                            "$_weight",
-                            style: TextStyle(fontSize: 50.0),
-                          ),
+                        Text("WEIGHT"),
+                        Text(
+                          "$_weight",
+                          style: TextStyle(fontSize: 50.0),
                         ),
                       ],
                     ),
@@ -141,12 +125,8 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Text("AGE"),
-                        ),
-                        Expanded(
-                          child: Text("$_age"),
-                        ),
+                        Text("AGE"),
+                        Text("$_age"),
                       ],
                     ),
                   ),
@@ -154,35 +134,33 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Expanded(
-            child: TextButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                backgroundColor: MaterialStateColor.resolveWith((states) =>
-                    (states == MaterialState.pressed ||
-                            states == MaterialState.focused)
-                        ? Color.fromRGBO(255, 139, 68, 1.0)
-                        : Color.fromRGBO(233, 179, 132, 1)),
-                shape: MaterialStateProperty.all(
-                  ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.circular(0),
-                    // side: BorderSide(width: double.infinity)
-                  ),
-                ),
-                minimumSize: MaterialStateProperty.resolveWith(
-                  (states) => Size(
-                    double.infinity,
-                    50.0,
-                  ),
-                ),
-                textStyle: MaterialStateTextStyle.resolveWith(
-                  (states) => TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                  ),
+          TextButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              backgroundColor: MaterialStateColor.resolveWith((states) =>
+                  (states == MaterialState.pressed ||
+                          states == MaterialState.focused)
+                      ? Color.fromRGBO(255, 139, 68, 1.0)
+                      : Color.fromRGBO(233, 179, 132, 1)),
+              shape: MaterialStateProperty.all(
+                ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.circular(0),
+                  // side: BorderSide(width: double.infinity)
                 ),
               ),
-              child: Text("CALCULATE"),
+              minimumSize: MaterialStateProperty.resolveWith(
+                (states) => Size(
+                  double.infinity,
+                  50.0,
+                ),
+              ),
+            ),
+            child: Text(
+              "CALCULATE",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
             ),
           )
         ],
