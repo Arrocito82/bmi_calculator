@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'MyCard.dart';
+
 void main() => runApp(BMICalculator());
 const primaryColor = Color.fromRGBO(124, 157, 150, 1.0);
 const primaryColorAccent = Color.fromRGBO(210, 215, 209, 1.0);
@@ -36,41 +38,26 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: primaryColor,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.male,
-                          size: 50.0,
-                        ),
-                        Text("MALE"),
-                      ],
-                    ),
+                  child: MyCard(
+                    children: [
+                      Icon(
+                        Icons.male,
+                        size: 50.0,
+                      ),
+                      Text("MALE"),
+                    ],
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: primaryColor,
+                    child: MyCard(
+                  children: [
+                    Icon(
+                      Icons.female,
+                      size: 50.0,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.female,
-                          size: 50.0,
-                        ),
-                        Text("FEMALE"),
-                      ],
-                    ),
-                  ),
-                ),
+                    Text("FEMALE"),
+                  ],
+                )),
               ],
             ),
           ),
@@ -78,59 +65,49 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: primaryColor,
-                    ),
-                    child: Column(
+                    child: MyCard(
+                  children: [
+                    Text("HEIGHT"),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("HEIGHT"),
-                        Text("$_height cm"),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: primaryColor,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("WEIGHT"),
                         Text(
-                          "$_weight",
+                          "$_height",
                           style: TextStyle(fontSize: 50.0),
                         ),
+                        Text(
+                          " cm",
+                        ),
                       ],
                     ),
-                  ),
-                ),
+                  ],
+                )),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Row(
+              children: [
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      color: primaryColor,
+                    child: MyCard(
+                  children: [
+                    Text("WEIGHT"),
+                    Text(
+                      "$_weight",
+                      style: TextStyle(fontSize: 50.0),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("AGE"),
-                        Text("$_age"),
-                      ],
+                  ],
+                )),
+                Expanded(
+                    child: MyCard(
+                  children: [
+                    Text("AGE"),
+                    Text(
+                      "$_age",
+                      style: TextStyle(fontSize: 50.0),
                     ),
-                  ),
-                ),
+                  ],
+                )),
               ],
             ),
           ),
