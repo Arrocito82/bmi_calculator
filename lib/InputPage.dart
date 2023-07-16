@@ -6,6 +6,7 @@ import 'MyColorPalette.dart';
 
 const int FEMALE = 1;
 const int MALE = 2;
+const int NONE_SELECTED_GENDER = 0;
 TextStyle numberTextStyle = TextStyle(fontSize: 50.0);
 TextStyle labelTextStyle = TextStyle(
   fontWeight: FontWeight.w800,
@@ -21,7 +22,7 @@ class _InputPageState extends State<InputPage> {
   int _weight = 0;
   int _height = 0;
   int _age = 0;
-  int _gender = 0;
+  int _gender = NONE_SELECTED_GENDER;
 
   List<Widget> getGenderButtons() => [
         Expanded(
@@ -29,7 +30,7 @@ class _InputPageState extends State<InputPage> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                _gender = MALE;
+                _gender = (_gender == MALE) ? NONE_SELECTED_GENDER : MALE;
               });
             },
             child: MyCard(
@@ -47,7 +48,7 @@ class _InputPageState extends State<InputPage> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                _gender = FEMALE;
+                _gender = (_gender == FEMALE) ? NONE_SELECTED_GENDER : FEMALE;
               });
             },
             child: MyCard(
@@ -81,6 +82,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   Text(
                     " cm",
+                    style: labelTextStyle,
                   ),
                 ],
               ),
