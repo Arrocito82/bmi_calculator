@@ -1,8 +1,16 @@
-import 'package:bmi_calculator/main.dart';
 import 'package:flutter/material.dart';
 
 import 'IconContent.dart';
 import 'MyCard.dart';
+import 'MyColorPalette.dart';
+
+const int FEMALE = 1;
+const int MALE = 2;
+TextStyle numberTextStyle = TextStyle(fontSize: 50.0);
+TextStyle labelTextStyle = TextStyle(
+  fontWeight: FontWeight.w800,
+  letterSpacing: 2.5,
+);
 
 class InputPage extends StatefulWidget {
   @override
@@ -15,42 +23,61 @@ class _InputPageState extends State<InputPage> {
   int _age = 0;
   int _gender = 0;
 
-  List<Widget> genderButtons = [
-    Expanded(
-      flex: 3,
-      child: MyCard(
-        primaryColor: primaryColor,
-        child: IconContent(
-          icon: Icons.male,
-          text: "MALE",
+  List<Widget> getGenderButtons() => [
+        Expanded(
+          flex: 3,
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _gender = MALE;
+              });
+            },
+            child: MyCard(
+              primaryColor: (_gender == MALE) ? primaryLight : primaryDark,
+              child: IconContent(
+                icon: Icons.male,
+                text: "MALE",
+                textStyle: labelTextStyle,
+              ),
+            ),
+          ),
         ),
-      ),
-    ),
-    Expanded(
-      flex: 3,
-      child: MyCard(
-        primaryColor: primaryColor,
-        child: IconContent(
-          icon: Icons.female,
-          text: "FEMALE",
+        Expanded(
+          flex: 3,
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                _gender = FEMALE;
+              });
+            },
+            child: MyCard(
+              primaryColor: (_gender == FEMALE) ? primaryLight : primaryDark,
+              child: IconContent(
+                icon: Icons.female,
+                text: "FEMALE",
+                textStyle: labelTextStyle,
+              ),
+            ),
+          ),
         ),
-      ),
-    ),
-  ];
+      ];
   Expanded getHeigthCard() => Expanded(
         flex: 4,
         child: MyCard(
-          primaryColor: primaryColor,
+          primaryColor: primaryLight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("HEIGHT"),
+              Text(
+                "HEIGHT",
+                style: labelTextStyle,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "$_height",
-                    style: TextStyle(fontSize: 50.0),
+                    style: numberTextStyle,
                   ),
                   Text(
                     " cm",
@@ -71,9 +98,9 @@ class _InputPageState extends State<InputPage> {
             style: ButtonStyle(
               backgroundColor: MaterialStateColor.resolveWith((states) {
                 if (states.any((element) => element == MaterialState.pressed)) {
-                  return Color.fromRGBO(239, 75, 148, 1.0);
+                  return secondaryDark;
                 } else {
-                  return Color.fromRGBO(255, 156, 186, 1.0);
+                  return secondaryLight;
                 }
               }),
               shape: MaterialStateProperty.all(
@@ -96,14 +123,17 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           flex: 3,
           child: MyCard(
-            primaryColor: primaryColor,
+            primaryColor: primaryLight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("WEIGHT"),
+                Text(
+                  "WEIGHT",
+                  style: labelTextStyle,
+                ),
                 Text(
                   "$_weight",
-                  style: TextStyle(fontSize: 50.0),
+                  style: numberTextStyle,
                 ),
               ],
             ),
@@ -112,14 +142,17 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           flex: 3,
           child: MyCard(
-            primaryColor: primaryColor,
+            primaryColor: primaryLight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("AGE"),
+                Text(
+                  "AGE",
+                  style: labelTextStyle,
+                ),
                 Text(
                   "$_age",
-                  style: TextStyle(fontSize: 50.0),
+                  style: numberTextStyle,
                 ),
               ],
             ),
@@ -139,7 +172,7 @@ class _InputPageState extends State<InputPage> {
               return Column(
                 children: [
                   Row(
-                    children: genderButtons,
+                    children: getGenderButtons(),
                   ),
                   getHeigthCard(),
                   Row(
@@ -156,7 +189,7 @@ class _InputPageState extends State<InputPage> {
                       children: [
                         Expanded(
                           child: Row(
-                            children: genderButtons,
+                            children: getGenderButtons(),
                           ),
                         ),
                         Expanded(
