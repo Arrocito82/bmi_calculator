@@ -6,10 +6,11 @@ import 'MyColorPalette.dart';
 
 enum Gender { female, male, none }
 
-TextStyle numberTextStyle = TextStyle(fontSize: 50.0);
+TextStyle numberTextStyle = TextStyle(fontSize: 50.0, color: Colors.white);
 TextStyle labelTextStyle = TextStyle(
-  fontWeight: FontWeight.w800,
   letterSpacing: 2.5,
+  fontSize: 20.0,
+  color: Colors.white,
 );
 
 class InputPage extends StatefulWidget {
@@ -92,32 +93,17 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
       );
-  Widget getCalculateButton1() => Expanded(
+  Widget getCalculateButton() => Expanded(
         flex: 2,
         child: Container(
           margin: EdgeInsets.all(12.0),
           width: double.infinity,
           child: TextButton(
             onPressed: () {},
-            style: ButtonStyle(
-              backgroundColor: MaterialStateColor.resolveWith((states) {
-                if (states.any((element) => element == MaterialState.pressed)) {
-                  return secondaryDark;
-                } else {
-                  return secondaryLight;
-                }
-              }),
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                ),
-              ),
-            ),
             child: Text(
               "CALCULATE",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 20.0,
               ),
             ),
           ),
@@ -182,7 +168,7 @@ class _InputPageState extends State<InputPage> {
                   Row(
                     children: getWeightAgeButtons(),
                   ),
-                  getCalculateButton1(),
+                  getCalculateButton(),
                 ],
               );
             } else {
@@ -208,7 +194,7 @@ class _InputPageState extends State<InputPage> {
                     child: Column(
                       children: [
                         getHeigthCard(),
-                        getCalculateButton1(),
+                        getCalculateButton(),
                       ],
                     ),
                   ),
