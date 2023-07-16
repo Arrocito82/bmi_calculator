@@ -11,11 +11,17 @@ class IconContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          icon,
-          size: 50.0,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(
+            icon,
+            size: 50.0,
+          ),
         ),
-        Text(text),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: Text(text),
+        ),
       ],
     );
   }

@@ -12,7 +12,10 @@ class MyCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: primaryColor,
           borderRadius: BorderRadius.all(Radius.circular(15))),
-      child: child,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: child,
+      ),
     );
   }
 }
