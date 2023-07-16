@@ -4,9 +4,8 @@ import 'IconContent.dart';
 import 'MyCard.dart';
 import 'MyColorPalette.dart';
 
-const int FEMALE = 1;
-const int MALE = 2;
-const int NONE_SELECTED_GENDER = 0;
+enum Gender { female, male, none }
+
 TextStyle numberTextStyle = TextStyle(fontSize: 50.0);
 TextStyle labelTextStyle = TextStyle(
   fontWeight: FontWeight.w800,
@@ -22,7 +21,7 @@ class _InputPageState extends State<InputPage> {
   int _weight = 0;
   int _height = 0;
   int _age = 0;
-  int _gender = NONE_SELECTED_GENDER;
+  Gender _gender = Gender.none;
 
   List<Widget> getGenderButtons() => [
         Expanded(
@@ -30,11 +29,12 @@ class _InputPageState extends State<InputPage> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                _gender = (_gender == MALE) ? NONE_SELECTED_GENDER : MALE;
+                _gender = (_gender == Gender.male) ? Gender.none : Gender.male;
               });
             },
             child: MyCard(
-              primaryColor: (_gender == MALE) ? primaryLight : primaryDark,
+              primaryColor:
+                  (_gender == Gender.male) ? primaryLight : primaryDark,
               child: IconContent(
                 icon: Icons.male,
                 text: "MALE",
@@ -48,11 +48,13 @@ class _InputPageState extends State<InputPage> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                _gender = (_gender == FEMALE) ? NONE_SELECTED_GENDER : FEMALE;
+                _gender =
+                    (_gender == Gender.female) ? Gender.none : Gender.female;
               });
             },
             child: MyCard(
-              primaryColor: (_gender == FEMALE) ? primaryLight : primaryDark,
+              primaryColor:
+                  (_gender == Gender.female) ? primaryLight : primaryDark,
               child: IconContent(
                 icon: Icons.female,
                 text: "FEMALE",
