@@ -63,52 +63,32 @@ class _InputPageState extends State<InputPage> {
       );
   Widget getCalculateButton1() => Expanded(
         flex: 2,
-        child: GestureDetector(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(0),
-              color: primaryColor,
-            ),
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                "CALCULATE",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
+        child: Container(
+          margin: EdgeInsets.all(12.0),
+          width: double.infinity,
+          child: TextButton(
+            onPressed: () {},
+            style: ButtonStyle(
+              backgroundColor: MaterialStateColor.resolveWith((states) {
+                if (states.any((element) => element == MaterialState.pressed)) {
+                  return Color.fromRGBO(239, 75, 148, 1.0);
+                } else {
+                  return Color.fromRGBO(255, 156, 186, 1.0);
+                }
+              }),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
                 ),
               ),
             ),
-          ),
-        ),
-      );
-  TextButton getCalculateButton2() => TextButton(
-        onPressed: () {},
-        style: ButtonStyle(
-          backgroundColor: MaterialStateColor.resolveWith((states) =>
-              (states == MaterialState.pressed ||
-                      states == MaterialState.focused ||
-                      states == MaterialState.selected)
-                  ? Color.fromRGBO(255, 139, 68, 1.0)
-                  : Color.fromRGBO(233, 179, 132, 1)),
-          shape: MaterialStateProperty.all(
-            ContinuousRectangleBorder(
-              borderRadius: BorderRadius.circular(0),
-              // side: BorderSide(width: double.infinity)
+            child: Text(
+              "CALCULATE",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+              ),
             ),
-          ),
-          // minimumSize: MaterialStateProperty.resolveWith(
-          //   (states) => Size(
-          //     double.infinity,
-          //     50.0,
-          //   ),
-          // ),
-        ),
-        child: Text(
-          "CALCULATE",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 20.0,
           ),
         ),
       );
