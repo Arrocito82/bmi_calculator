@@ -15,7 +15,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int _weight = 0;
-  int _height = kMinHeight;
+  int _height = 155;
   int _age = 0;
   Gender _gender = Gender.none;
 
