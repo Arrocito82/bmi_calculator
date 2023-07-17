@@ -2,16 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'IconContent.dart';
 import 'MyCard.dart';
-import 'MyColorPalette.dart';
+import 'constants.dart';
 
 enum Gender { female, male, none }
-
-TextStyle numberTextStyle = TextStyle(fontSize: 50.0, color: Colors.white);
-TextStyle labelTextStyle = TextStyle(
-  letterSpacing: 2.5,
-  fontSize: 20.0,
-  color: Colors.white,
-);
 
 class InputPage extends StatefulWidget {
   @override
@@ -35,11 +28,10 @@ class _InputPageState extends State<InputPage> {
             },
             child: MyCard(
               primaryColor:
-                  (_gender == Gender.male) ? primaryLight : primaryDark,
-              child: IconContent(
+                  (_gender == Gender.male) ? kPrimaryLight : kPrimaryDark,
+              child: const IconContent(
                 icon: Icons.male,
                 text: "MALE",
-                textStyle: labelTextStyle,
               ),
             ),
           ),
@@ -55,11 +47,10 @@ class _InputPageState extends State<InputPage> {
             },
             child: MyCard(
               primaryColor:
-                  (_gender == Gender.female) ? primaryLight : primaryDark,
+                  (_gender == Gender.female) ? kPrimaryLight : kPrimaryDark,
               child: IconContent(
                 icon: Icons.female,
                 text: "FEMALE",
-                textStyle: labelTextStyle,
               ),
             ),
           ),
@@ -68,24 +59,24 @@ class _InputPageState extends State<InputPage> {
   Expanded getHeigthCard() => Expanded(
         flex: 4,
         child: MyCard(
-          primaryColor: primaryLight,
+          primaryColor: kPrimaryLight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 "HEIGHT",
-                style: labelTextStyle,
+                style: kLabelTextStyle,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "$_height",
-                    style: numberTextStyle,
+                    style: kNumberTextStyle,
                   ),
                   Text(
                     " cm",
-                    style: labelTextStyle,
+                    style: kLabelTextStyle,
                   ),
                 ],
               ),
@@ -113,17 +104,17 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           flex: 3,
           child: MyCard(
-            primaryColor: primaryLight,
+            primaryColor: kPrimaryLight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "WEIGHT",
-                  style: labelTextStyle,
+                  style: kLabelTextStyle,
                 ),
                 Text(
                   "$_weight",
-                  style: numberTextStyle,
+                  style: kNumberTextStyle,
                 ),
               ],
             ),
@@ -132,17 +123,17 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           flex: 3,
           child: MyCard(
-            primaryColor: primaryLight,
+            primaryColor: kPrimaryLight,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   "AGE",
-                  style: labelTextStyle,
+                  style: kLabelTextStyle,
                 ),
                 Text(
                   "$_age",
-                  style: numberTextStyle,
+                  style: kNumberTextStyle,
                 ),
               ],
             ),

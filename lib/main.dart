@@ -1,11 +1,9 @@
-import 'package:bmi_calculator/MyColorPalette.dart';
+import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'InputPage.dart';
 
 void main() => runApp(BMICalculator());
-
-const String defaultFontFamily = "Tektur";
 
 class BMICalculator extends StatelessWidget {
   @override
@@ -14,12 +12,12 @@ class BMICalculator extends StatelessWidget {
       home: InputPage(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: defaultFontFamily,
+        fontFamily: kDefaultFontFamily,
         appBarTheme: AppBarTheme(
-          backgroundColor: primaryDark,
+          backgroundColor: kPrimaryDark,
           centerTitle: true,
           titleTextStyle: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: kDefaultFontFamily,
             fontSize: 30.0,
           ),
         ),
@@ -30,9 +28,9 @@ class BMICalculator extends StatelessWidget {
           style: ButtonStyle(
             backgroundColor: MaterialStateColor.resolveWith((states) {
               if (states.any((element) => element == MaterialState.pressed)) {
-                return secondaryDark;
+                return kSecondaryDark;
               } else {
-                return secondaryLight;
+                return kSecondaryLight;
               }
             }),
             shape: MaterialStateProperty.all(
@@ -42,14 +40,14 @@ class BMICalculator extends StatelessWidget {
             ),
             textStyle: MaterialStatePropertyAll(
               TextStyle(
-                fontFamily: defaultFontFamily,
+                fontFamily: kDefaultFontFamily,
                 letterSpacing: 2.5,
                 fontSize: 30.0,
               ),
             ),
           ),
         ),
-        scaffoldBackgroundColor: background,
+        scaffoldBackgroundColor: kBackground,
       ),
     );
   }
