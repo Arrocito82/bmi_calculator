@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'IconContent.dart';
-import 'MyCard.dart';
 import 'constants.dart';
+import 'icon_content.dart';
+import 'my_card.dart';
 
 enum Gender { female, male, none }
 
 class InputPage extends StatefulWidget {
+  const InputPage({super.key});
+
   @override
-  _InputPageState createState() => _InputPageState();
+  State<InputPage> createState() => _InputPageState();
 }
 
 class _InputPageState extends State<InputPage> {
@@ -48,7 +50,7 @@ class _InputPageState extends State<InputPage> {
             child: MyCard(
               primaryColor:
                   (_gender == Gender.female) ? kPrimaryLight : kPrimaryDark,
-              child: IconContent(
+              child: const IconContent(
                 icon: Icons.female,
                 text: "FEMALE",
               ),
@@ -56,32 +58,43 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
       ];
-  Expanded getHeigthCard() => Expanded(
+  Expanded getHeightCard() => Expanded(
         flex: 4,
         child: MyCard(
           primaryColor: kPrimaryLight,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "HEIGHT",
                 style: kLabelTextStyle,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.ideographic,
+                textBaseline: TextBaseline.alphabetic,
                 children: [
                   Text(
                     "$_height",
                     style: kNumberTextStyle,
                   ),
-                  Text(
+                  const Text(
                     " cm",
                     style: kLabelTextStyle,
                   ),
                 ],
               ),
+              Slider(
+                value: _height.toDouble(),
+                max: 100,
+                divisions: 100,
+                label: null,
+                onChanged: (double value) {
+                  setState(() {
+                    _height = value.round();
+                  });
+                },
+              )
             ],
           ),
         ),
@@ -89,11 +102,11 @@ class _InputPageState extends State<InputPage> {
   Widget getCalculateButton() => Expanded(
         flex: 2,
         child: Container(
-          margin: EdgeInsets.all(12.0),
+          margin: const EdgeInsets.all(12.0),
           width: double.infinity,
           child: TextButton(
             onPressed: () {},
-            child: Text(
+            child: const Text(
               "CALCULATE",
               style: TextStyle(
                 color: Colors.white,
@@ -110,7 +123,7 @@ class _InputPageState extends State<InputPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "WEIGHT",
                   style: kLabelTextStyle,
                 ),
@@ -129,7 +142,7 @@ class _InputPageState extends State<InputPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   "AGE",
                   style: kLabelTextStyle,
                 ),
@@ -146,56 +159,54 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: const Text('BMI CALCULATOR'),
       ),
-      body: Container(
-        child: OrientationBuilder(
-          builder: (context, orientation) {
-            if (orientation == Orientation.portrait) {
-              return Column(
-                children: [
-                  Row(
-                    children: getGenderButtons(),
-                  ),
-                  getHeigthCard(),
-                  Row(
-                    children: getWeightAgeButtons(),
-                  ),
-                  getCalculateButton(),
-                ],
-              );
-            } else {
-              return Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: Row(
-                            children: getGenderButtons(),
-                          ),
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          if (orientation == Orientation.portrait) {
+            return Column(
+              children: [
+                Row(
+                  children: getGenderButtons(),
+                ),
+                getHeightCard(),
+                Row(
+                  children: getWeightAgeButtons(),
+                ),
+                getCalculateButton(),
+              ],
+            );
+          } else {
+            return Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: getGenderButtons(),
                         ),
-                        Expanded(
-                          child: Row(
-                            children: getWeightAgeButtons(),
-                          ),
+                      ),
+                      Expanded(
+                        child: Row(
+                          children: getWeightAgeButtons(),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        getHeigthCard(),
-                        getCalculateButton(),
-                      ],
-                    ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      getHeightCard(),
+                      getCalculateButton(),
+                    ],
                   ),
-                ],
-              );
-            }
-          },
-        ),
+                ),
+              ],
+            );
+          }
+        },
       ),
     );
   }
