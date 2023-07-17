@@ -15,7 +15,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   int _weight = 0;
-  int _height = 0;
+  int _height = kMinHeight;
   int _age = 0;
   Gender _gender = Gender.none;
 
@@ -86,9 +86,13 @@ class _InputPageState extends State<InputPage> {
               ),
               Slider(
                 value: _height.toDouble(),
-                max: 100,
+                max: kMaxHeight.toDouble(),
+                min: kMinHeight.toDouble(),
                 divisions: 100,
                 label: null,
+                activeColor: kPrimaryActive,
+                thumbColor: kPrimaryDark,
+                inactiveColor: kPrimaryInactive,
                 onChanged: (double value) {
                   setState(() {
                     _height = value.round();
