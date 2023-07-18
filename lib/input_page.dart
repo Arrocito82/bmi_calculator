@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -21,7 +22,7 @@ class _InputPageState extends State<InputPage> {
 
   List<Widget> getGenderButtons() => [
         Expanded(
-          flex: 3,
+          flex: 2,
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -39,7 +40,7 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
         Expanded(
-          flex: 3,
+          flex: 2,
           child: GestureDetector(
             onTap: () {
               setState(() {
@@ -58,8 +59,8 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
       ];
-  Expanded getHeightCard() => Expanded(
-        flex: 4,
+  Expanded getHeightCard({int flex = 2}) => Expanded(
+        flex: flex,
         child: MyCard(
           primaryColor: kPrimaryLight,
           child: Column(
@@ -112,7 +113,7 @@ class _InputPageState extends State<InputPage> {
         ),
       );
   Widget getCalculateButton() => Expanded(
-        flex: 2,
+        flex: 1,
         child: Container(
           margin: const EdgeInsets.all(12.0),
           width: double.infinity,
@@ -143,6 +144,19 @@ class _InputPageState extends State<InputPage> {
                   "$_weight",
                   style: kNumberTextStyle,
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RoundIconButton(
+                      onPressed: () {},
+                      icon: Icons.add,
+                    ),
+                    RoundIconButton(
+                      onPressed: () {},
+                      icon: Icons.horizontal_rule,
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
@@ -161,6 +175,19 @@ class _InputPageState extends State<InputPage> {
                 Text(
                   "$_age",
                   style: kNumberTextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    RoundIconButton(
+                      onPressed: () {},
+                      icon: Icons.add,
+                    ),
+                    RoundIconButton(
+                      onPressed: () {},
+                      icon: Icons.horizontal_rule,
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -195,22 +222,21 @@ class _InputPageState extends State<InputPage> {
                   child: Column(
                     children: [
                       Expanded(
+                        flex: 2,
                         child: Row(
                           children: getGenderButtons(),
                         ),
                       ),
-                      Expanded(
-                        child: Row(
-                          children: getWeightAgeButtons(),
-                        ),
-                      ),
+                      getHeightCard(flex: 3),
                     ],
                   ),
                 ),
                 Expanded(
                   child: Column(
                     children: [
-                      getHeightCard(),
+                      Row(
+                        children: getWeightAgeButtons(),
+                      ),
                       getCalculateButton(),
                     ],
                   ),

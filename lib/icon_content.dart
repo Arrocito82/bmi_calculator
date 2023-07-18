@@ -11,19 +11,13 @@ class IconContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Icon(
-            icon,
-            size: 50.0,
-          ),
+        Icon(
+          icon,
+          size: 50.0,
         ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8.0),
-          child: Text(text, style: kLabelTextStyle),
-        ),
+        Text(text, style: kLabelTextStyle),
       ],
     );
   }
