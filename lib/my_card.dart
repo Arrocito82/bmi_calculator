@@ -8,7 +8,7 @@ class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(12.0),
+      margin: EdgeInsets.symmetric(horizontal: 6, vertical: 7),
       decoration: BoxDecoration(
           color: primaryColor,
           borderRadius: BorderRadius.all(Radius.circular(15))),

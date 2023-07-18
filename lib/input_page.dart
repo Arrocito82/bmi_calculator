@@ -1,5 +1,6 @@
 import 'package:bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'constants.dart';
 import 'icon_content.dart';
@@ -33,7 +34,7 @@ class _InputPageState extends State<InputPage> {
               primaryColor:
                   (_gender == Gender.male) ? kPrimaryLight : kPrimaryDark,
               child: const IconContent(
-                icon: Icons.male,
+                icon: FontAwesomeIcons.mars,
                 text: "MALE",
               ),
             ),
@@ -52,7 +53,7 @@ class _InputPageState extends State<InputPage> {
               primaryColor:
                   (_gender == Gender.female) ? kPrimaryLight : kPrimaryDark,
               child: const IconContent(
-                icon: Icons.female,
+                icon: FontAwesomeIcons.venus,
                 text: "FEMALE",
               ),
             ),
@@ -115,7 +116,7 @@ class _InputPageState extends State<InputPage> {
   Widget getCalculateButton() => Expanded(
         flex: 1,
         child: Container(
-          margin: const EdgeInsets.all(12.0),
+          margin: const EdgeInsets.all(7.0),
           width: double.infinity,
           child: TextButton(
             onPressed: () {},
@@ -149,11 +150,11 @@ class _InputPageState extends State<InputPage> {
                   children: [
                     RoundIconButton(
                       onPressed: () {},
-                      icon: Icons.add,
+                      icon: FontAwesomeIcons.plus,
                     ),
                     RoundIconButton(
                       onPressed: () {},
-                      icon: Icons.horizontal_rule,
+                      icon: FontAwesomeIcons.minus,
                     ),
                   ],
                 ),
@@ -181,11 +182,11 @@ class _InputPageState extends State<InputPage> {
                   children: [
                     RoundIconButton(
                       onPressed: () {},
-                      icon: Icons.add,
+                      icon: FontAwesomeIcons.plus,
                     ),
                     RoundIconButton(
                       onPressed: () {},
-                      icon: Icons.horizontal_rule,
+                      icon: FontAwesomeIcons.minus,
                     ),
                   ],
                 ),
@@ -200,51 +201,54 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: const Text('BMI CALCULATOR'),
       ),
-      body: OrientationBuilder(
-        builder: (context, orientation) {
-          if (orientation == Orientation.portrait) {
-            return Column(
-              children: [
-                Row(
-                  children: getGenderButtons(),
-                ),
-                getHeightCard(),
-                Row(
-                  children: getWeightAgeButtons(),
-                ),
-                getCalculateButton(),
-              ],
-            );
-          } else {
-            return Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      getHeightCard(flex: 3),
-                      Expanded(
-                        flex: 2,
-                        child: Row(
-                          children: getGenderButtons(),
+      body: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: OrientationBuilder(
+          builder: (context, orientation) {
+            if (orientation == Orientation.portrait) {
+              return Column(
+                children: [
+                  Row(
+                    children: getGenderButtons(),
+                  ),
+                  getHeightCard(),
+                  Row(
+                    children: getWeightAgeButtons(),
+                  ),
+                  getCalculateButton(),
+                ],
+              );
+            } else {
+              return Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      children: [
+                        getHeightCard(flex: 3),
+                        Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: getGenderButtons(),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: getWeightAgeButtons(),
-                      ),
-                      getCalculateButton(),
-                    ],
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: getWeightAgeButtons(),
+                        ),
+                        getCalculateButton(),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            );
-          }
-        },
+                ],
+              );
+            }
+          },
+        ),
       ),
     );
   }
