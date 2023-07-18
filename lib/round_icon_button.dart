@@ -24,11 +24,10 @@ class RoundIconButton extends StatelessWidget {
       padding: padding,
       child: RawMaterialButton(
         onPressed: onPressed,
-        constraints: BoxConstraints(
-          minHeight: size,
-          minWidth: size,
+        constraints: BoxConstraints.tightFor(
+          height: size,
+          width: size,
         ),
-        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: CircleBorder(),
         fillColor: fillColor,
         highlightColor: highlightColor,
