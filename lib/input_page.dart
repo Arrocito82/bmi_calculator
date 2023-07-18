@@ -16,9 +16,9 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  int _weight = 0;
+  int _weight = 60;
   int _height = 155;
-  int _age = 0;
+  int _age = 18;
   Gender _gender = Gender.none;
 
   List<Widget> getGenderButtons() => [
@@ -149,12 +149,20 @@ class _InputPageState extends State<InputPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundIconButton(
-                      onPressed: () {},
-                      icon: FontAwesomeIcons.plus,
+                      onPressed: () {
+                        setState(() {
+                          _weight--;
+                        });
+                      },
+                      icon: FontAwesomeIcons.minus,
                     ),
                     RoundIconButton(
-                      onPressed: () {},
-                      icon: FontAwesomeIcons.minus,
+                      onPressed: () {
+                        setState(() {
+                          _weight++;
+                        });
+                      },
+                      icon: FontAwesomeIcons.plus,
                     ),
                   ],
                 ),
@@ -181,12 +189,20 @@ class _InputPageState extends State<InputPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     RoundIconButton(
-                      onPressed: () {},
-                      icon: FontAwesomeIcons.plus,
+                      onPressed: () {
+                        setState(() {
+                          _age--;
+                        });
+                      },
+                      icon: FontAwesomeIcons.minus,
                     ),
                     RoundIconButton(
-                      onPressed: () {},
-                      icon: FontAwesomeIcons.minus,
+                      onPressed: () {
+                        setState(() {
+                          _age++;
+                        });
+                      },
+                      icon: FontAwesomeIcons.plus,
                     ),
                   ],
                 ),
