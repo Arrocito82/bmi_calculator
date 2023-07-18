@@ -10,6 +10,8 @@ const kSecondaryLight = Color.fromRGBO(255, 156, 186, 1);
 const String kDefaultFontFamily = "Tektur";
 const TextStyle kNumberTextStyle =
     TextStyle(fontSize: 50.0, color: Colors.white);
+const TextStyle kResultNumberTextStyle =
+    TextStyle(fontSize: 100.0, color: Colors.white);
 const TextStyle kLabelTextStyle = TextStyle(
   letterSpacing: 2.5,
   fontSize: 20.0,
@@ -17,7 +19,7 @@ const TextStyle kLabelTextStyle = TextStyle(
 );
 const TextStyle kTitleTextStyle = TextStyle(
   letterSpacing: 2.5,
-  fontSize: 20.0,
+  fontSize: 30.0,
   color: kSecondaryLight,
 );
 const int kMinHeight = 120;

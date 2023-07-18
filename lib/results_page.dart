@@ -15,35 +15,23 @@ class ResultsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Expanded yourResult = Expanded(
-        child: Center(
-      child: Text(
-        "Your Result",
-        style: kNumberTextStyle,
-      ),
-    ));
-    Expanded titleWidget = Expanded(
-        child: Center(
-      child: Text(
-        "$title",
-        style: kTitleTextStyle,
-      ),
-    ));
-    Expanded bmiWidget = Expanded(
-        child: Center(
-      child: Text(
-        "$bmi",
-        style: kNumberTextStyle,
-      ),
-    ));
-    Expanded descriptionWidget = Expanded(
-        child: Center(
-      child: Text(
-        "$description",
-        style: kLabelTextStyle,
-        textAlign: TextAlign.center,
-      ),
-    ));
+    Text yourResult = Text(
+      "Your Result",
+      style: kNumberTextStyle,
+    );
+    Text titleWidget = Text(
+      "$title",
+      style: kTitleTextStyle,
+    );
+    Text bmiWidget = Text(
+      "$bmi",
+      style: kResultNumberTextStyle,
+    );
+    Text descriptionWidget = Text(
+      "$description",
+      style: kLabelTextStyle,
+      textAlign: TextAlign.center,
+    );
     CalculateButton calculateButton = CalculateButton(
       context: context,
       text: "RE-CALCULATE",
@@ -56,34 +44,51 @@ class ResultsPage extends StatelessWidget {
         if (orientation == Orientation.portrait) {
           return Column(
             children: [
-              yourResult,
-              titleWidget,
-              bmiWidget,
-              descriptionWidget,
-              calculateButton,
-            ],
-          );
-        } else {
-          return Column(
-            children: [
-              yourResult,
               Expanded(
-                flex: 3,
-                child: Row(
+                flex: 5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Column(
-                        children: [
-                          titleWidget,
-                          bmiWidget,
-                        ],
-                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: yourResult,
                     ),
+                    titleWidget,
+                    bmiWidget,
                     descriptionWidget,
                   ],
                 ),
               ),
-              calculateButton
+              calculateButton,
+            ],
+          );
+        } else {
+          return Row(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 25.0),
+                      child: yourResult,
+                    ),
+                    titleWidget,
+                    bmiWidget,
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Center(child: descriptionWidget),
+                    ),
+                    calculateButton,
+                  ],
+                ),
+              ),
             ],
           );
         }
