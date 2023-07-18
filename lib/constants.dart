@@ -15,5 +15,10 @@ const TextStyle kLabelTextStyle = TextStyle(
   fontSize: 20.0,
   color: Colors.white,
 );
+const TextStyle kTitleTextStyle = TextStyle(
+  letterSpacing: 2.5,
+  fontSize: 20.0,
+  color: kSecondaryLight,
+);
 const int kMinHeight = 120;
 const int kMaxHeight = 220;

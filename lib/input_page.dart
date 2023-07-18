@@ -1,7 +1,9 @@
+import 'package:bmi_calculator/results_page.dart';
 import 'package:bmi_calculator/round_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'calculate_button.dart';
 import 'constants.dart';
 import 'icon_content.dart';
 import 'my_card.dart';
@@ -113,21 +115,22 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
       );
-  Widget getCalculateButton() => Expanded(
-        flex: 1,
-        child: Container(
-          margin: const EdgeInsets.all(7.0),
-          width: double.infinity,
-          child: TextButton(
-            onPressed: () {},
-            child: const Text(
-              "CALCULATE",
-              style: TextStyle(
-                color: Colors.white,
+  Widget getCalculateButton() => CalculateButton(
+        context: context,
+        text: 'CALCULATE',
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ResultsPage(
+                title: "normal",
+                description:
+                    "description description description description description description description description description description description ",
+                bmi: 12.5,
               ),
             ),
-          ),
-        ),
+          );
+        },
       );
   List<Widget> getWeightAgeButtons() => [
         Expanded(
