@@ -256,8 +256,11 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: Column(
                       children: [
-                        Row(
-                          children: getWeightAgeButtons(),
+                        Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: getWeightAgeButtons(),
+                          ),
                         ),
                         getCalculateButton(),
                       ],

@@ -40,59 +40,65 @@ class ResultsPage extends StatelessWidget {
       },
     );
     return Scaffold(
-      body: OrientationBuilder(builder: (context, orientation) {
-        if (orientation == Orientation.portrait) {
-          return Column(
-            children: [
-              Expanded(
-                flex: 5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 25.0),
-                      child: yourResult,
-                    ),
-                    titleWidget,
-                    bmiWidget,
-                    descriptionWidget,
-                  ],
+      appBar: AppBar(
+        title: const Text('BMI CALCULATOR'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: OrientationBuilder(builder: (context, orientation) {
+          if (orientation == Orientation.portrait) {
+            return Column(
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 25.0),
+                        child: yourResult,
+                      ),
+                      titleWidget,
+                      bmiWidget,
+                      descriptionWidget,
+                    ],
+                  ),
                 ),
-              ),
-              calculateButton,
-            ],
-          );
-        } else {
-          return Row(
-            children: [
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 25.0),
-                      child: yourResult,
-                    ),
-                    titleWidget,
-                    bmiWidget,
-                  ],
+                calculateButton,
+              ],
+            );
+          } else {
+            return Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 25.0),
+                        child: yourResult,
+                      ),
+                      titleWidget,
+                      bmiWidget,
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: Center(child: descriptionWidget),
-                    ),
-                    calculateButton,
-                  ],
+                Expanded(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Center(child: descriptionWidget),
+                      ),
+                      calculateButton,
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        }
-      }),
+              ],
+            );
+          }
+        }),
+      ),
     );
   }
 }
